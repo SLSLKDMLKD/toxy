@@ -18,6 +18,8 @@
             --white: #ffffff;
             --gold: #ffd700;
             --navy: #032B44;
+            --container-width: 90%;
+            --container-max-width: 1400px;
         }
 
         * {
@@ -27,6 +29,7 @@
         }
 
         html {
+            font-size: 16px; /* Base font size */
             scroll-behavior: smooth;
         }
 
@@ -35,6 +38,64 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Container Responsive */
+        .container {
+            width: var(--container-width);
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Responsive Typography */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+        }
+
+        /* Flexbox Utilities */
+        .flex {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        /* Images Responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Navigation */
@@ -123,6 +184,8 @@
             justify-content: center;
             text-align: center;
             color: var(--white);
+            padding: clamp(80px, 15vh, 150px) 0 clamp(40px, 10vh, 80px);
+            margin-top: 60px;
         }
 
         .hero-content {
@@ -173,12 +236,6 @@
         .about {
             padding: 8rem 0;
             background: var(--light);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .section-title {
@@ -938,6 +995,112 @@
         .principal-link .btn-primary:hover i {
             transform: scale(1.1);
         }
+
+        /* Media Queries */
+        /* Mobile Devices (up to 480px) */
+        @media screen and (max-width: 480px) {
+            html {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .grid {
+                gap: 1rem;
+            }
+        }
+
+        /* Tablets (481px to 768px) */
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                padding: 1rem;
+                flex-direction: column;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* Small Laptops (769px to 1024px) */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                --container-width: 95%;
+            }
+        }
+
+        /* Large Laptops and Desktops (1025px to 1200px) */
+        @media screen and (min-width: 1025px) and (max-width: 1200px) {
+            .container {
+                --container-width: 90%;
+            }
+        }
+
+        /* 4K and Ultra-wide Screens (above 1200px) */
+        @media screen and (min-width: 1201px) {
+            html {
+                font-size: 18px;
+            }
+
+            .container {
+                --container-max-width: 1400px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                font-size: 12pt;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --navy: #1a237e;
+                --gold: #ffd54f;
+                --white: #ffffff;
+                --cream: #fff8e1;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (forced-colors: active) {
+            :root {
+                --navy: CanvasText;
+                --gold: Highlight;
+                --white: Canvas;
+            }
+        }
     </style>
 </head>
 <body>
@@ -965,8 +1128,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Welcome to Pimburuwellegama Central College</h1>
-            <p>
-Nurturing minds, building futures, and creating leaders of tomorrow</p>
+            <p>Nurturing minds, building futures, and creating leaders of tomorrow</p>
             <a href="#about" class="cta-btn">Discover More</a>
         </div>
     </section>
@@ -1236,7 +1398,7 @@ Nurturing minds, building futures, and creating leaders of tomorrow</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Creating by (2025 A/L bach) support school ICT teacher </p>
+                <p>Website designed and developed by ICT Teacher</p>
                 <p>&copy; 2025 Pimburuwellegama Central College. All rights reserved.</p>
             </div>
         </div>
