@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Level - Pimburuwellegama Central College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1a237e;
+            --gold: #ffc107;
+            --white: #ffffff;
+            --cream: #fff8e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: var(--navy);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-logo h1 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Header Section */
+        .header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 120px 0 60px;
+            text-align: center;
+            background-image: linear-gradient(rgba(26,35,126,0.9), rgba(26,35,126,0.9)), url('images/advanced-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Streams Section */
+        .streams {
+            padding: 5rem 0;
+            background: var(--cream);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stream-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stream-info {
+            background: var(--white);
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stream-info:hover {
+            transform: translateY(-5px);
+        }
+
+        .stream-info h2 {
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .subject-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .subject-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(26,35,126,0.1);
+        }
+
+        .subject-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .features h2 {
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Results Section */
+        .results {
+            padding: 5rem 0;
+            background: var(--cream);
+        }
+
+        .results h2 {
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: var(--white);
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .result-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .percentage {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .stream-content,
+            .feature-grid,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="School Logo">
+                <h1>PCC</h1>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="teachers.html" class="nav-link">
+                    <i class="fas fa-chalkboard-teacher"></i> Teachers
+                </a>
+                <a href="advanced.html" class="nav-link">
+                    <i class="fas fa-graduation-cap"></i> Advanced Level
+                </a>
+                <a href="primary.html" class="nav-link">
+                    <i class="fas fa-child"></i> Primary
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Advanced Level Education</h1>
+            <p>Grades 12-13</p>
+        </div>
+    </header>
+
+    <!-- Streams Section -->
+    <section class="streams">
+        <div class="container">
+            <div class="stream-content">
+                <div class="stream-info">
+                    <h2>Science Stream</h2>
+                    <p>Prepare for university education in science and technology fields.</p>
+                    <ul class="subject-list">
+                        <li>Physics</li>
+                        <li>Chemistry</li>
+                        <li>Biology</li>
+                        <li>Combined Mathematics</li>
+                        <li>General English</li>
+                        <li>General IT</li>
+                    </ul>
+                </div>
+                <div class="stream-info">
+                    <h2>Commerce Stream</h2>
+                    <p>Build a foundation for business and economics careers.</p>
+                    <ul class="subject-list">
+                        <li>Business Studies</li>
+                        <li>Accounting</li>
+                        <li>Economics</li>
+                        <li>Information Technology</li>
+                        <li>General English</li>
+                        <li>General IT</li>
+                    </ul>
+                </div>
+                <div class="stream-info">
+                    <h2>Arts Stream</h2>
+                    <p>Explore humanities, languages, and social sciences.</p>
+                    <ul class="subject-list">
+                        <li>Logic & Scientific Method</li>
+                        <li>Political Science</li>
+                        <li>Geography</li>
+                        <li>Media Studies</li>
+                        <li>General English</li>
+                        <li>General IT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Our Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Modern Labs</h3>
+                    <p>Well-equipped science laboratories</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>IT Facilities</h3>
+                    <p>Advanced computer labs</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Library</h3>
+                    <p>Extensive study resources</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Career Guidance</h3>
+                    <p>Professional counseling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <h2>Our Achievement</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>Science Stream</h3>
+                    <div class="percentage">92%</div>
+                    <p>University Entrance Rate</p>
+                </div>
+                <div class="result-card">
+                    <h3>Commerce Stream</h3>
+                    <div class="percentage">88%</div>
+                    <p>University Entrance Rate</p>
+                </div>
+                <div class="result-card">
+                    <h3>Arts Stream</h3>
+                    <div class="percentage">85%</div>
+                    <p>University Entrance Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Pimburuwellegama Central College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+    </script>
+</body>
+</html>

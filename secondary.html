@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondary Education - Pimburuwellegama Central College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --accent: #3498db;
+            --light: #fff8e1;
+            --dark: #1a237e;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)),
+                        url('images/secondary-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .overview-text {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .overview-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Subjects Section */
+        .subjects {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .subject-description {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        /* Facilities Section */
+        .facilities {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .facility-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .facility-content {
+            padding: 2rem;
+        }
+
+        .facility-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .facility-description {
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .overview-content {
+                gap: 2rem;
+            }
+
+            .subjects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-grid,
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="School Logo">
+                <span class="logo-text">PCC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li><a href="secondary.html">Secondary</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="teachers.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Secondary Education</h1>
+            <p>Grades 6-11: Building Strong Foundations for Success</p>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Secondary Education at PCC</h2>
+                    <p>Our secondary education program is designed to provide students with a comprehensive learning experience that prepares them for higher education and future careers. We focus on developing critical thinking, problem-solving skills, and character development.</p>
+                    <p>The curriculum follows the national education guidelines while incorporating innovative teaching methods and modern technology to enhance the learning experience. Our experienced teachers are dedicated to helping each student reach their full potential.</p>
+                    <p>Key Features:</p>
+                    <ul>
+                        <li>Comprehensive curriculum covering all core subjects</li>
+                        <li>Modern teaching methods and technology integration</li>
+                        <li>Regular assessments and progress monitoring</li>
+                        <li>Extra-curricular activities and sports programs</li>
+                        <li>Career guidance and counseling services</li>
+                    </ul>
+                </div>
+                <div class="overview-image">
+                    <img src="images/classroom.jpg" alt="Secondary Classroom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="subjects">
+        <div class="container">
+            <h2 class="section-title">Core Subjects</h2>
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <i class="fas fa-calculator subject-icon"></i>
+                    <h3 class="subject-title">Mathematics</h3>
+                    <p class="subject-description">Advanced mathematics including algebra, geometry, and statistics to develop strong analytical skills.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-flask subject-icon"></i>
+                    <h3 class="subject-title">Science</h3>
+                    <p class="subject-description">Comprehensive coverage of physics, chemistry, and biology with practical laboratory work.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-book subject-icon"></i>
+                    <h3 class="subject-title">Languages</h3>
+                    <p class="subject-description">Sinhala, English, and Tamil language studies focusing on literature and communication.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-globe-asia subject-icon"></i>
+                    <h3 class="subject-title">Social Studies</h3>
+                    <p class="subject-description">History, geography, and civics to understand our world and heritage.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-laptop-code subject-icon"></i>
+                    <h3 class="subject-title">ICT</h3>
+                    <p class="subject-description">Computer science and information technology skills for the digital age.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-palette subject-icon"></i>
+                    <h3 class="subject-title">Aesthetics</h3>
+                    <p class="subject-description">Art, music, and dance to nurture creativity and cultural appreciation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities">
+        <div class="container">
+            <h2 class="section-title">Our Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <img src="images/science-lab.jpg" alt="Science Laboratory" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Science Laboratories</h3>
+                        <p class="facility-description">Modern laboratories equipped with the latest equipment for physics, chemistry, and biology experiments.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="images/computer-lab.jpg" alt="Computer Laboratory" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Computer Labs</h3>
+                        <p class="facility-description">State-of-the-art computer facilities with high-speed internet for ICT education.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="images/library.jpg" alt="Library" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Library</h3>
+                        <p class="facility-description">Extensive collection of books, journals, and digital resources for research and reading.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="images/sports-ground.jpg" alt="Sports Ground" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Sports Facilities</h3>
+                        <p class="facility-description">Well-maintained sports grounds and facilities for various sports and physical education.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">PCC</div>
+                    <p>Nurturing minds, building futures, and creating leaders of tomorrow</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Education</h4>
+                    <ul>
+                        <li><a href="primary.html">Primary</a></li>
+                        <li><a href="secondary.html">Secondary</a></li>
+                        <li><a href="advanced.html">Advanced</a></li>
+                        <li><a href="teachers.html">Teachers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pimburuwellegama Central College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
