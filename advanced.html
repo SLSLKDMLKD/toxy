@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Level - Pimburuwellegama College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1a237e;
+            --gold: #ffc107;
+            --white: #ffffff;
+            --cream: #fff8e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: var(--navy);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-logo h1 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Header Section */
+        .header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 120px 0 60px;
+            text-align: center;
+            background-image: linear-gradient(rgba(26,35,126,0.9), rgba(26,35,126,0.9)), url('images/advanced-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Streams Section */
+        .streams {
+            padding: 5rem 0;
+            background: var(--cream);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stream-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stream-info {
+            background: var(--white);
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stream-info:hover {
+            transform: translateY(-5px);
+        }
+
+        .stream-info h2 {
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .subject-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .subject-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(26,35,126,0.1);
+        }
+
+        .subject-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .features h2 {
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Results Section */
+        .results {
+            padding: 5rem 0;
+            background: var(--cream);
+        }
+
+        .results h2 {
+            color: var(--navy);
+            font-family: 'Lora', serif;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: var(--white);
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .result-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .percentage {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .stream-content,
+            .feature-grid,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        .main-channel {
+            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.02) 0%, rgba(255, 193, 7, 0.02) 100%);
+            position: relative;
+        }
+
+        .main-channel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: 
+                linear-gradient(45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(-45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(45deg, transparent 75%, #1a237e 75%),
+                linear-gradient(-45deg, transparent 75%, #1a237e 75%);
+            background-size: 16px 16px;
+            background-color: #ffc107;
+            opacity: 0.1;
+        }
+
+        .main-channel-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(26, 35, 126, 0.1);
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .main-channel-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+            border-radius: 17px;
+            pointer-events: none;
+        }
+
+        .main-channel-card .channel-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .main-channel-card .channel-icon i {
+            font-size: 3rem;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .main-channel-card h2 {
+            color: #1a237e;
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-channel-card p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .main-telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #1a237e;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #1a237e;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .main-telegram-btn i {
+            font-size: 1.4rem;
+            color: #ffc107;
+        }
+
+        .main-telegram-btn:hover {
+            background: white;
+            color: #1a237e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        .main-telegram-btn:hover i {
+            color: #1a237e;
+        }
+
+        .stream-resources {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-decoration {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffc107, transparent);
+            position: relative;
+        }
+
+        .header-decoration::before,
+        .header-decoration::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #1a237e;
+            border-radius: 50%;
+            background: white;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .header-decoration::before {
+            left: 20%;
+        }
+
+        .header-decoration::after {
+            right: 20%;
+        }
+
+        .section-title {
+            color: #1a237e;
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .section-subtitle {
+            color: #666;
+            text-align: center;
+            margin: 1rem 0 3rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .stream-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .stream-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 35, 126, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stream-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #1a237e;
+        }
+
+        .stream-card.science::before {
+            background: linear-gradient(to right, #1a237e, #4CAF50);
+        }
+
+        .stream-card.commerce::before {
+            background: linear-gradient(to right, #1a237e, #F57C00);
+        }
+
+        .stream-card.arts::before {
+            background: linear-gradient(to right, #1a237e, #E91E63);
+        }
+
+        .stream-card.ict::before {
+            background: linear-gradient(to right, #1a237e, #2196F3);
+        }
+
+        .colonial-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .colonial-border::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-radius: 8px;
+        }
+
+        .stream-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffc107;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .stream-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .stream-icon i {
+            font-size: 2rem;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .stream-card:hover .stream-icon {
+            background: #1a237e;
+            border-color: #ffc107;
+        }
+
+        .stream-card:hover .stream-icon i {
+            color: #ffc107;
+        }
+
+        .stream-card h3 {
+            color: #1a237e;
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+            color: #666;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .subject-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1a237e;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #1a237e;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .telegram-btn i {
+            font-size: 1.2rem;
+            color: #ffc107;
+        }
+
+        .telegram-btn:hover {
+            background: white;
+            color: #1a237e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
+        }
+
+        .telegram-btn:hover i {
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .main-channel-card {
+                padding: 2rem 1rem;
+                margin: 0 1rem;
+            }
+
+            .main-channel-card .channel-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .main-channel-card .channel-icon i {
+                font-size: 2.5rem;
+            }
+
+            .main-channel-card h2 {
+                font-size: 1.8rem;
+            }
+
+            .main-channel-card p {
+                font-size: 1rem;
+            }
+
+            .main-telegram-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .stream-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .image-album {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.02) 0%, rgba(255, 193, 7, 0.02) 100%);
+            position: relative;
+        }
+
+        .image-album::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: 
+                linear-gradient(45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(-45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(45deg, transparent 75%, #1a237e 75%),
+                linear-gradient(-45deg, transparent 75%, #1a237e 75%);
+            background-size: 16px 16px;
+            background-color: #ffc107;
+            opacity: 0.1;
+        }
+
+        .slideshow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(26, 35, 126, 0.1);
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .slideshow-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+            border-radius: 14px;
+            pointer-events: none;
+        }
+
+        .slides {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(26, 35, 126, 0.9), transparent);
+            color: white;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .slide-caption h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin: 0 0 5px;
+        }
+
+        .slide-caption p {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 35, 126, 0.6);
+            color: #ffc107;
+            padding: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slide-btn:hover {
+            background: rgba(26, 35, 126, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .slide-dots {
+            text-align: center;
+            padding: 15px 0 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background: rgba(26, 35, 126, 0.2);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: #1a237e;
+            transform: scale(1.2);
+            border-color: #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .slides {
+                height: 300px;
+            }
+
+            .slide-btn {
+                padding: 12px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .slide-caption h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-caption p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="School Logo">
+                <h1>PCC</h1>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="teachers.html" class="nav-link">
+                    <i class="fas fa-chalkboard-teacher"></i> Teachers
+                </a>
+                <a href="advanced.html" class="nav-link">
+                    <i class="fas fa-graduation-cap"></i> Advanced Level
+                </a>
+                <a href="primary.html" class="nav-link">
+                    <i class="fas fa-child"></i> Primary
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Advanced Level Education</h1>
+            <p>Grades 12-13</p>
+        </div>
+    </header>
+
+    <!-- Streams Section -->
+    <section class="streams">
+        <div class="container">
+            <div class="stream-content">
+                <div class="stream-info">
+                    <h2>Science Stream</h2>
+                    <p>Prepare for university education in science and technology fields.</p>
+                    <ul class="subject-list">
+                        <li>Physics</li>
+                        <li>Chemistry</li>
+                        <li>Biology</li>
+                        <li>Combined Mathematics</li>
+                        <li>General English</li>
+                        <li>General IT</li>
+                    </ul>
+                </div>
+                <div class="stream-info">
+                    <h2>Commerce Stream</h2>
+                    <p>Build a foundation for business and economics careers.</p>
+                    <ul class="subject-list">
+                        <li>Business Studies</li>
+                        <li>Accounting</li>
+                        <li>Economics</li>
+                        <li>Information Technology</li>
+                        <li>General English</li>
+                        <li>General IT</li>
+                    </ul>
+                </div>
+                <div class="stream-info">
+                    <h2>Arts Stream</h2>
+                    <p>Explore humanities, languages, and social sciences.</p>
+                    <ul class="subject-list">
+                        <li>Logic & Scientific Method</li>
+                        <li>Political Science</li>
+                        <li>Geography</li>
+                        <li>Media Studies</li>
+                        <li>General English</li>
+                        <li>General IT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Our Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Modern Labs</h3>
+                    <p>Well-equipped science laboratories</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>IT Facilities</h3>
+                    <p>Advanced computer labs</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Library</h3>
+                    <p>Extensive study resources</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Career Guidance</h3>
+                    <p>Professional counseling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <h2>Our Achievement</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>Science Stream</h3>
+                    <div class="percentage">92%</div>
+                    <p>University Entrance Rate</p>
+                </div>
+                <div class="result-card">
+                    <h3>Commerce Stream</h3>
+                    <div class="percentage">88%</div>
+                    <p>University Entrance Rate</p>
+                </div>
+                <div class="result-card">
+                    <h3>Arts Stream</h3>
+                    <div class="percentage">85%</div>
+                    <p>University Entrance Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Telegram Channel Section -->
+    <section class="main-channel">
+        <div class="container">
+            <div class="main-channel-card">
+                <div class="colonial-border"></div>
+                <div class="channel-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <h2>Join Our A/L Channel</h2>
+                <p>Stay updated with all Advanced Level announcements, past papers, and study materials</p>
+                <a href="https://t.me/pcc_advanced" class="main-telegram-btn" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                    Join Main A/L Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Album Section -->
+    <section class="image-album">
+        <div class="container">
+            <div class="section-header">
+                <div class="header-decoration"></div>
+                <h2 class="section-title">A/L Life at PCC</h2>
+                <div class="header-decoration"></div>
+            </div>
+            <p class="section-subtitle">Capturing the excellence in Advanced Level education</p>
+
+            <div class="slideshow-container">
+                <div class="slides">
+                    <div class="slide fade">
+                        <img src="images/advanced/chemistry-lab.jpg" alt="Chemistry Laboratory">
+                        <div class="slide-caption">
+                            <h3>Chemistry Laboratory</h3>
+                            <p>Advanced experiments and research facilities</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/advanced/physics-lab.jpg" alt="Physics Laboratory">
+                        <div class="slide-caption">
+                            <h3>Physics Laboratory</h3>
+                            <p>Modern equipment for practical learning</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/advanced/commerce-room.jpg" alt="Commerce Studies">
+                        <div class="slide-caption">
+                            <h3>Commerce Studies</h3>
+                            <p>Business and economics learning environment</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/advanced/ict-lab.jpg" alt="ICT Laboratory">
+                        <div class="slide-caption">
+                            <h3>ICT Laboratory</h3>
+                            <p>State-of-the-art computing facilities</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/advanced/arts-class.jpg" alt="Arts Studies">
+                        <div class="slide-caption">
+                            <h3>Arts Studies</h3>
+                            <p>Creative and analytical learning spaces</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+
+                <div class="slide-dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stream Resources Section -->
+    <section class="stream-resources">
+        <div class="container">
+            <div class="section-header">
+                <div class="header-decoration"></div>
+                <h2 class="section-title">A/L Study Resources</h2>
+                <div class="header-decoration"></div>
+            </div>
+            <p class="section-subtitle">Access educational materials for your stream via our dedicated Telegram channels</p>
+            
+            <div class="stream-grid">
+                <!-- Science Stream -->
+                <div class="stream-card science">
+                    <div class="colonial-border"></div>
+                    <div class="stream-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Science Stream</h3>
+                    <ul class="subject-list">
+                        <li>Physics</li>
+                        <li>Chemistry</li>
+                        <li>Biology</li>
+                        <li>Combined Mathematics</li>
+                    </ul>
+                    <a href="https://t.me/pcc_science" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Science Channel
+                    </a>
+                </div>
+
+                <!-- Commerce Stream -->
+                <div class="stream-card commerce">
+                    <div class="colonial-border"></div>
+                    <div class="stream-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Commerce Stream</h3>
+                    <ul class="subject-list">
+                        <li>Business Studies</li>
+                        <li>Accounting</li>
+                        <li>Economics</li>
+                        <li>Business Statistics</li>
+                    </ul>
+                    <a href="https://t.me/pcc_commerce" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Commerce Channel
+                    </a>
+                </div>
+
+                <!-- Arts Stream -->
+                <div class="stream-card arts">
+                    <div class="colonial-border"></div>
+                    <div class="stream-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>Arts Stream</h3>
+                    <ul class="subject-list">
+                        <li>Languages & Literature</li>
+                        <li>History</li>
+                        <li>Geography</li>
+                        <li>Political Science</li>
+                    </ul>
+                    <a href="https://t.me/pcc_arts" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Arts Channel
+                    </a>
+                </div>
+
+                <!-- ICT Stream -->
+                <div class="stream-card ict">
+                    <div class="colonial-border"></div>
+                    <div class="stream-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>ICT Stream</h3>
+                    <ul class="subject-list">
+                        <li>Information Technology</li>
+                        <li>Software Engineering</li>
+                        <li>Database Management</li>
+                        <li>Web Development</li>
+                    </ul>
+                    <a href="https://t.me/pcc_ict" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join ICT Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Pimburuwellegama College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        let slideIndex = 1;
+        let slideInterval;
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+                dots[i].classList.remove("active");
+            }
+
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        function changeSlide(n) {
+            clearInterval(slideInterval);
+            showSlides(slideIndex += n);
+            startSlideshow();
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            showSlides(slideIndex = n);
+            startSlideshow();
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 5000);
+        }
+
+        // Initialize slideshow
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlides(slideIndex);
+            startSlideshow();
+
+            // Pause slideshow on hover
+            const slideshowContainer = document.querySelector('.slideshow-container');
+            slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slideshowContainer.addEventListener('mouseleave', startSlideshow);
+        });
+    </script>
+</body>
+</html>

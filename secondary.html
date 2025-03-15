@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondary Education - Pimburuwellegama College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --accent: #3498db;
+            --light: #fff8e1;
+            --dark: #1a237e;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)),
+                        url('images/secondary-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Overview Section */
+        .overview {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .overview-text {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .overview-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Subjects Section */
+        .subjects {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .subject-description {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        /* Facilities Section */
+        .facilities {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .facility-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .facility-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .facility-content {
+            padding: 2rem;
+        }
+
+        .facility-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .facility-description {
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .overview-content {
+                gap: 2rem;
+            }
+
+            .subjects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-grid,
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Main Telegram Channel Section */
+        .main-channel {
+            padding: 4rem 0 2rem;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.02) 0%, rgba(255, 193, 7, 0.02) 100%);
+            position: relative;
+        }
+
+        .main-channel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: 
+                linear-gradient(45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(-45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(45deg, transparent 75%, #1a237e 75%),
+                linear-gradient(-45deg, transparent 75%, #1a237e 75%);
+            background-size: 16px 16px;
+            background-color: #ffc107;
+            opacity: 0.1;
+        }
+
+        .main-channel-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(26, 35, 126, 0.1);
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .main-channel-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+            border-radius: 17px;
+            pointer-events: none;
+        }
+
+        .main-channel-card .channel-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+            position: relative;
+        }
+
+        .main-channel-card .channel-icon i {
+            font-size: 3rem;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .main-channel-card h2 {
+            color: #1a237e;
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-channel-card p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .main-telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #1a237e;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #1a237e;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .main-telegram-btn i {
+            font-size: 1.4rem;
+            color: #ffc107;
+        }
+
+        .main-telegram-btn:hover {
+            background: white;
+            color: #1a237e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        .main-telegram-btn:hover i {
+            color: #1a237e;
+        }
+
+        .grade-resources {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-decoration {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ffc107, transparent);
+            position: relative;
+        }
+
+        .header-decoration::before,
+        .header-decoration::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #1a237e;
+            border-radius: 50%;
+            background: white;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .header-decoration::before {
+            left: 20%;
+        }
+
+        .header-decoration::after {
+            right: 20%;
+        }
+
+        .section-title {
+            color: #1a237e;
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .section-subtitle {
+            color: #666;
+            text-align: center;
+            margin: 1rem 0 3rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .grade-card {
+            background: #ffffff url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%231a237e" opacity="0.03" d="M0 0h100v100H0z"/><path fill="%23ffc107" opacity="0.03" d="M20 20h60v60H20z"/></svg>') center/cover;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 35, 126, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .colonial-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .colonial-border::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-radius: 8px;
+        }
+
+        .grade-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffc107;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .grade-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(26, 35, 126, 0.1);
+            position: relative;
+        }
+
+        .grade-icon::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .grade-icon i {
+            font-size: 2rem;
+            color: #1a237e;
+            transition: all 0.3s ease;
+        }
+
+        .grade-card:hover .grade-icon {
+            background: #1a237e;
+            border-color: #ffc107;
+        }
+
+        .grade-card:hover .grade-icon i {
+            color: #ffc107;
+        }
+
+        .grade-card:hover .grade-icon::after {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+
+        .grade-card h3 {
+            color: #1a237e;
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .grade-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            min-height: 40px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1a237e;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #1a237e;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .telegram-btn i {
+            font-size: 1.2rem;
+            color: #ffc107;
+        }
+
+        .telegram-btn:hover {
+            background: white;
+            color: #1a237e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
+        }
+
+        .telegram-btn:hover i {
+            color: #1a237e;
+        }
+
+        @media (max-width: 768px) {
+            .main-channel-card {
+                padding: 2rem 1rem;
+                margin: 0 1rem;
+            }
+
+            .main-channel-card .channel-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .main-channel-card .channel-icon i {
+                font-size: 2.5rem;
+            }
+
+            .main-channel-card h2 {
+                font-size: 1.8rem;
+            }
+
+            .main-channel-card p {
+                font-size: 1rem;
+            }
+
+            .main-telegram-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .section-header {
+                gap: 1rem;
+            }
+
+            .header-decoration {
+                width: 60px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .grade-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .grade-card {
+                padding: 1.5rem;
+            }
+
+            .grade-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .grade-icon i {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Image Album Section */
+        .image-album {
+            padding: 4rem 0;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .image-album::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: 
+                linear-gradient(45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(-45deg, #1a237e 25%, transparent 25%) -8px 0,
+                linear-gradient(45deg, transparent 75%, #1a237e 75%),
+                linear-gradient(-45deg, transparent 75%, #1a237e 75%);
+            background-size: 16px 16px;
+            background-color: #ffc107;
+            opacity: 0.1;
+        }
+
+        .slideshow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(26, 35, 126, 0.1);
+            border: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .slideshow-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+            border-radius: 14px;
+            pointer-events: none;
+        }
+
+        .slides {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(26, 35, 126, 0.9), transparent);
+            color: white;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .slide-caption h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            margin: 0 0 5px;
+        }
+
+        .slide-caption p {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 35, 126, 0.6);
+            color: #ffc107;
+            padding: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slide-btn:hover {
+            background: rgba(26, 35, 126, 0.9);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .slide-dots {
+            text-align: center;
+            padding: 15px 0 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background: rgba(26, 35, 126, 0.2);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: #1a237e;
+            transform: scale(1.2);
+            border-color: #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .slides {
+                height: 300px;
+            }
+
+            .slide-btn {
+                padding: 12px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .slide-caption h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-caption p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="School Logo">
+                <span class="logo-text">PCC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li><a href="secondary.html">Secondary</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="teachers.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Secondary Education</h1>
+            <p>Grades 6-11: Building Strong Foundations for Success</p>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Secondary Education at PCC</h2>
+                    <p>Our secondary education program is designed to provide students with a comprehensive learning experience that prepares them for higher education and future careers. We focus on developing critical thinking, problem-solving skills, and character development.</p>
+                    <p>The curriculum follows the national education guidelines while incorporating innovative teaching methods and modern technology to enhance the learning experience. Our experienced teachers are dedicated to helping each student reach their full potential.</p>
+                    <p>Key Features:</p>
+                    <ul>
+                        <li>Comprehensive curriculum covering all core subjects</li>
+                        <li>Modern teaching methods and technology integration</li>
+                        <li>Regular assessments and progress monitoring</li>
+                        <li>Extra-curricular activities and sports programs</li>
+                        <li>Career guidance and counseling services</li>
+                    </ul>
+                </div>
+                <div class="overview-image">
+                    <img src="images/classroom.jpg" alt="Secondary Classroom">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="subjects">
+        <div class="container">
+            <h2 class="section-title">Core Subjects</h2>
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <i class="fas fa-calculator subject-icon"></i>
+                    <h3 class="subject-title">Mathematics</h3>
+                    <p class="subject-description">Advanced mathematics including algebra, geometry, and statistics to develop strong analytical skills.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-flask subject-icon"></i>
+                    <h3 class="subject-title">Science</h3>
+                    <p class="subject-description">Comprehensive coverage of physics, chemistry, and biology with practical laboratory work.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-book subject-icon"></i>
+                    <h3 class="subject-title">Languages</h3>
+                    <p class="subject-description">Sinhala, English, and Tamil language studies focusing on literature and communication.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-globe-asia subject-icon"></i>
+                    <h3 class="subject-title">Social Studies</h3>
+                    <p class="subject-description">History, geography, and civics to understand our world and heritage.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-laptop-code subject-icon"></i>
+                    <h3 class="subject-title">ICT</h3>
+                    <p class="subject-description">Computer science and information technology skills for the digital age.</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-palette subject-icon"></i>
+                    <h3 class="subject-title">Aesthetics</h3>
+                    <p class="subject-description">Art, music, and dance to nurture creativity and cultural appreciation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities">
+        <div class="container">
+            <h2 class="section-title">Our Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <img src="images/science-lab.jpg" alt="Science Laboratory" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Science Laboratories</h3>
+                        <p class="facility-description">Modern laboratories equipped with the latest equipment for physics, chemistry, and biology experiments.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="images/computer-lab.jpg" alt="Computer Laboratory" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Computer Labs</h3>
+                        <p class="facility-description">State-of-the-art computer facilities with high-speed internet for ICT education.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="images/library.jpg" alt="Library" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Library</h3>
+                        <p class="facility-description">Extensive collection of books, journals, and digital resources for research and reading.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <img src="images/sports-ground.jpg" alt="Sports Ground" class="facility-image">
+                    <div class="facility-content">
+                        <h3 class="facility-title">Sports Facilities</h3>
+                        <p class="facility-description">Well-maintained sports grounds and facilities for various sports and physical education.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Telegram Channel Section -->
+    <section class="main-channel">
+        <div class="container">
+            <div class="main-channel-card">
+                <div class="colonial-border"></div>
+                <div class="channel-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <h2>Join Our Main Channel</h2>
+                <p>Stay updated with all secondary education announcements, events, and resources</p>
+                <a href="https://t.me/pcc_secondary" class="main-telegram-btn" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                    Join Main Secondary Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary Grade Resources Section -->
+    <section class="grade-resources">
+        <div class="container">
+            <div class="section-header">
+                <div class="header-decoration"></div>
+                <h2 class="section-title">Secondary Education Resources</h2>
+                <div class="header-decoration"></div>
+            </div>
+            <p class="section-subtitle">Access educational materials for Grades 6-11 via our dedicated Telegram channels</p>
+            
+            <div class="grade-grid">
+                <!-- Grade 6 -->
+                <div class="grade-card">
+                    <div class="colonial-border"></div>
+                    <div class="grade-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Grade 6</h3>
+                    <p>Core subjects and foundation materials</p>
+                    <a href="https://t.me/pcc_grade6" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Grade 6 Channel
+                    </a>
+                </div>
+
+                <!-- Grade 7 -->
+                <div class="grade-card">
+                    <div class="colonial-border"></div>
+                    <div class="grade-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Grade 7</h3>
+                    <p>Science and mathematics focus</p>
+                    <a href="https://t.me/pcc_grade7" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Grade 7 Channel
+                    </a>
+                </div>
+
+                <!-- Grade 8 -->
+                <div class="grade-card">
+                    <div class="colonial-border"></div>
+                    <div class="grade-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Grade 8</h3>
+                    <p>Advanced concepts and practical learning</p>
+                    <a href="https://t.me/pcc_grade8" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Grade 8 Channel
+                    </a>
+                </div>
+
+                <!-- Grade 9 -->
+                <div class="grade-card">
+                    <div class="colonial-border"></div>
+                    <div class="grade-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Grade 9</h3>
+                    <p>O/L preparation and study materials</p>
+                    <a href="https://t.me/pcc_grade9" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Grade 9 Channel
+                    </a>
+                </div>
+
+                <!-- Grade 10 -->
+                <div class="grade-card">
+                    <div class="colonial-border"></div>
+                    <div class="grade-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Grade 10</h3>
+                    <p>O/L focused curriculum resources</p>
+                    <a href="https://t.me/pcc_grade10" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Grade 10 Channel
+                    </a>
+                </div>
+
+                <!-- Grade 11 -->
+                <div class="grade-card">
+                    <div class="colonial-border"></div>
+                    <div class="grade-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Grade 11</h3>
+                    <p>O/L examination preparation</p>
+                    <a href="https://t.me/pcc_grade11" class="telegram-btn" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                        Join Grade 11 Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Album Section -->
+    <section class="image-album">
+        <div class="container">
+            <div class="section-header">
+                <div class="header-decoration"></div>
+                <h2 class="section-title">Secondary School Life</h2>
+                <div class="header-decoration"></div>
+            </div>
+            <p class="section-subtitle">Capturing memorable moments of our secondary education journey</p>
+
+            <div class="slideshow-container">
+                <div class="slides">
+                    <div class="slide fade">
+                        <img src="images/secondary/science-lab.jpg" alt="Science Laboratory">
+                        <div class="slide-caption">
+                            <h3>Science Laboratory</h3>
+                            <p>Students conducting experiments in our modern lab</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/secondary/computer-lab.jpg" alt="Computer Laboratory">
+                        <div class="slide-caption">
+                            <h3>ICT Education</h3>
+                            <p>State-of-the-art computer facilities</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/secondary/sports-day.jpg" alt="Sports Activities">
+                        <div class="slide-caption">
+                            <h3>Sports Activities</h3>
+                            <p>Annual sports meet and athletic achievements</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/secondary/cultural-event.jpg" alt="Cultural Events">
+                        <div class="slide-caption">
+                            <h3>Cultural Events</h3>
+                            <p>Celebrating our rich cultural heritage</p>
+                        </div>
+                    </div>
+
+                    <div class="slide fade">
+                        <img src="images/secondary/library.jpg" alt="School Library">
+                        <div class="slide-caption">
+                            <h3>Library Resources</h3>
+                            <p>Extensive collection of academic resources</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+
+                <div class="slide-dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">PCC</div>
+                    <p>Nurturing minds, building futures, and creating leaders of tomorrow</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Education</h4>
+                    <ul>
+                        <li><a href="primary.html">Primary</a></li>
+                        <li><a href="secondary.html">Secondary</a></li>
+                        <li><a href="advanced.html">Advanced</a></li>
+                        <li><a href="teachers.html">Teachers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pimburuwellegama College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        let slideIndex = 1;
+        let slideInterval;
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+                dots[i].classList.remove("active");
+            }
+
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        function changeSlide(n) {
+            clearInterval(slideInterval);
+            showSlides(slideIndex += n);
+            startSlideshow();
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            showSlides(slideIndex = n);
+            startSlideshow();
+        }
+
+        function startSlideshow() {
+            slideInterval = setInterval(() => {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 5000);
+        }
+
+        // Initialize slideshow
+        showSlides(slideIndex);
+        startSlideshow();
+
+        // Pause slideshow on hover
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slideshowContainer.addEventListener('mouseleave', startSlideshow);
+    </script>
+</body>
+</html>
