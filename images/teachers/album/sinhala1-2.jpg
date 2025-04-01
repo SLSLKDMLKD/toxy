@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f0f8ff"/>
+  <text x="200" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Sinhala Literature Event</text>
+  <rect x="50" y="50" width="300" height="200" stroke="#1a237e" stroke-width="5" fill="none" rx="10" ry="10"/>
+  <polygon points="200,80 220,120 260,120 230,150 240,190 200,170 160,190 170,150 140,120 180,120" fill="#ffc107"/>
+</svg>

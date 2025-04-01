@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#fff3e0"/>
+  <text x="200" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Clay Modeling</text>
+  <rect x="50" y="50" width="300" height="200" stroke="#1a237e" stroke-width="5" fill="none" rx="10" ry="10"/>
+  <circle cx="200" cy="150" r="50" fill="#ffe0b2" stroke="#333" stroke-width="2"/>
+  <circle cx="180" cy="130" r="5" fill="#333"/>
+  <circle cx="220" cy="130" r="5" fill="#333"/>
+  <path d="M180 170 Q 200 190 220 170" stroke="#333" stroke-width="2" fill="none"/>
+</svg>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #clear-search {
+            background-color: #f44336;
+        }
+        #clear-search:hover {
+            background-color: #d32f2f;
+        }
+        #print-button {
+            background-color: #2196F3;
+        }
+        #print-button:hover {
+            background-color: #0b7dda;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .loading, .error, .no-results {
+            padding: 20px;
+            text-align: center;
+        }
+        .loading {
+            color: #2196F3;
+        }
+        .error {
+            color: #f44336;
+        }
+        .update-info {
+            font-size: 0.8em;
+            color: #666;
+            text-align: right;
+            margin-top: 10px;
+        }
+        #print-button-container {
+            display: none;
+            margin-top: 15px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+            }
+            .filter-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/Screenshot_2025-03-28_182234-removebg-preview.png" alt="School Logo" class="logo">
+            <h1>Student Examination Results Portal</h1>
+            <p>View and print your examination results</p>
+        </header>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="grade-select">Select Grade:</label>
+                <select id="grade-select">
+                    <option value="all">All Grades</option>
+                    <!-- Grades will be populated dynamically -->
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="class-select">Select Class:</label>
+                <select id="class-select">
+                    <option value="all">All Classes</option>
+                    <!-- Classes will be populated based on selected grade -->
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="student-index">Student Index Number:</label>
+                <input type="text" id="student-index" placeholder="Enter index number">
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end; gap: 10px;">
+                <button id="search-button">Search</button>
+                <button id="clear-search">Clear</button>
+            </div>
+        </div>
+        
+        <div id="print-button-container">
+            <button id="print-button">Print Result</button>
+        </div>
+        
+        <div class="results" id="results-container">
+            <!-- Results will be displayed here -->
+            <div class="loading">Loading results...</div>
+        </div>
+        
+        <div class="update-info">
+            Last updated: <span id="update-time">-</span>
+        </div>
+    </div>
+    
+    <!-- Google API Client Library -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
+    
+    <!-- Loading Animation Script -->
+    <script src="loading-animation.js"></script>
+    
+    <!-- Excel Connector Script -->
+    <script src="sheetsconnector.js"></script>
+</body>
+</html>

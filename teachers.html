@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Teachers - Pimburuwellegama College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page-specific styles */
+        .header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)),
+                        url('images/Screenshot 2025-03-15 121212.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        /* New styles for teacher sections */
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .subject-group {
+            margin-bottom: 4rem;
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .subject-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .subject-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .subject-group-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .staff-grid-teachers {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .staff-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .staff-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .staff-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .staff-card:hover .staff-image img {
+            transform: scale(1.05);
+        }
+        
+        .staff-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .staff-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .designation {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        
+        .subject {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .grades {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .staff-grid-teachers {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .subject-group {
+                padding: 1.5rem;
+            }
+            
+            .subject-group-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .teachers-intro {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-text {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .intro-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .departments {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .department-section {
+            margin-bottom: 5rem;
+        }
+
+        .department-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .department-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .department-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .department-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 992px) {
+            .intro-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .intro-image {
+                order: -1;
+            }
+        }
+
+        /* Teacher Activities Album Styles */
+        .teacher-activities {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .activities-album {
+            margin-top: 3rem;
+        }
+
+        .album-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        .album-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .album-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .album-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .album-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 35, 126, 0.8);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .album-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--primary);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .album-nav:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .album-nav.prev {
+            left: 20px;
+        }
+
+        .album-nav.next {
+            right: 20px;
+        }
+
+        .album-thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 150px 0 80px;
+            }
+
+            .header h1 {
+                font-size: 2.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .intro-text h2 {
+                font-size: 2rem;
+            }
+
+            .department-title h2 {
+                font-size: 2rem;
+            }
+
+            .album-slider {
+                height: 350px;
+            }
+
+            .album-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .album-slider {
+                height: 250px;
+            }
+
+            .slide-caption {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            .album-thumbnails {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/Screenshot_2025-03-28_182234-removebg-preview.png" alt="School Logo">
+                <span class="logo-text">PCC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li><a href="secondary.html">Secondary</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="teachers.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Our Teachers</h1>
+            <p>Meet the dedicated educators shaping our students' futures</p>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="teachers-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Excellence in Education</h2>
+                    <p>At Pimburuwellegama College, our teachers are the heart of our educational community. With their expertise, dedication, and passion for teaching, they inspire and guide our students to achieve their full potential.</p>
+                    <p>Our faculty consists of highly qualified professionals who bring a wealth of knowledge and experience to the classroom. They are committed to providing a supportive and stimulating learning environment where students can thrive academically and personally.</p>
+                    <p>Our teachers regularly participate in professional development programs to stay updated with the latest teaching methodologies and educational technologies, ensuring that our students receive the best possible education.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/Screenshot%202025-04-01%20233759.png" alt="Teachers at Pimburuwellegama College">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Activities Album Section -->
+    <section class="teacher-activities">
+        <div class="container">
+            <div class="department-title">
+                <h2>Teacher Activities</h2>
+            </div>
+            <p class="section-description">Our teachers are actively involved in various educational and extracurricular activities that enrich our school community.</p>
+            
+            <div class="activities-album">
+                <div class="album-container">
+                    <div class="album-slider">
+                        <div class="album-slide active">
+                            <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/WhatsApp%20Image%202025-03-17%20at%205.17.51%20PM(1).jpeg" alt="Teacher Activity">
+                            <div class="slide-caption">Language teachers conducting a workshop</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/WhatsApp%20Image%202025-03-17%20at%205.17.51%20PM.jpeg" alt="Teacher Activity">
+                            <div class="slide-caption">English department organizing a debate competition</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/WhatsApp%20Image%202025-03-17%20at%205.17.18%20PM.jpeg" alt="Teacher Activity">
+                            <div class="slide-caption">Art teachers preparing for the annual exhibition</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/WhatsApp%20Image%202025-03-17%20at%205.16.51%20PM.jpeg" alt="Teacher Activity">
+                            <div class="slide-caption">Teachers participating in professional development</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/WhatsApp%20Image%202025-03-17%20at%205.15.59%20PM.jpeg" alt="Teacher Activity">
+                            <div class="slide-caption">Creative arts session led by our talented teachers</div>
+                        </div>
+                    </div>
+                    <button class="album-nav prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="album-nav next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="album-thumbnails">
+                    <div class="thumbnail active" data-index="0">
+                        <img src="images/teachers/album/sinhala1-3.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="1">
+                        <img src="images/teachers/album/english1-2.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="2">
+                        <img src="images/teachers/album/art1-1.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="3">
+                        <img src="images/teachers/album/english1-3.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="4">
+                        <img src="images/teachers/album/art1-2.jpg" alt="Thumbnail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grade Sections -->
+    <section class="departments">
+        <div class="container">
+            <!-- Primary Section (Grades 1-5) -->
+            <div class="department-section">
+                <div class="department-title">
+                    <h2>Primary Education (Grades 1-5)</h2>
+                </div>
+                <p class="section-description">Our dedicated primary education teachers provide a strong foundation in core subjects for our youngest students.</p>
+                
+                <!-- Primary Subjects -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Core Subjects</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Sinhala Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/sinhala1-1.jpg" alt="Sinhala Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Kumari Perera</h3>
+                                <div class="designation">Primary Sinhala Teacher</div>
+                                <div class="subject">Sinhala</div>
+                                <div class="grades">Grades 1-5</div>
+                            </div>
+                        </div>
+                        <!-- Mathematics Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/math1-1.jpg" alt="Mathematics Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Rohan Jayasinghe</h3>
+                                <div class="designation">Primary Mathematics Teacher</div>
+                                <div class="subject">Mathematics</div>
+                                <div class="grades">Grades 1-5</div>
+                            </div>
+                        </div>
+                        <!-- Environment Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/env1-1.jpg" alt="Environment Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Ms. Amali Gunasekara</h3>
+                                <div class="designation">Primary Environment Teacher</div>
+                                <div class="subject">Environment</div>
+                                <div class="grades">Grades 1-5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Section (Grades 6-11) -->
+            <div class="department-section">
+                <div class="department-title">
+                    <h2>Secondary Education (Grades 6-11)</h2>
+                </div>
+                <p class="section-description">Our secondary education teachers guide students through a comprehensive curriculum designed to develop critical thinking and practical skills.</p>
+                
+                <!-- Core Subjects -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Core Subjects</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Buddhism Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/buddhism1-1.jpg" alt="Buddhism Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Ven. Sumedha Thero</h3>
+                                <div class="designation">Buddhism Teacher</div>
+                                <div class="subject">Buddhism</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Sinhala Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/sinhala1-2.jpg" alt="Sinhala Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Nimal Dissanayake</h3>
+                                <div class="designation">Sinhala Teacher</div>
+                                <div class="subject">Sinhala Language</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- English Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/english1-1.jpg" alt="English Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Sarah Johnson</h3>
+                                <div class="designation">Senior English Teacher</div>
+                                <div class="subject">English Language</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Mathematics Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/math1-2.jpg" alt="Mathematics Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Prasanna Weerasinghe</h3>
+                                <div class="designation">Mathematics Teacher</div>
+                                <div class="subject">Mathematics</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Science Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/science1-1.jpg" alt="Science Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Chaminda Perera</h3>
+                                <div class="designation">Science Teacher</div>
+                                <div class="subject">Science</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- History Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/history1-1.jpg" alt="History Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Lalitha Bandara</h3>
+                                <div class="designation">History Teacher</div>
+                                <div class="subject">History</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business & Social Studies -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Business & Social Studies</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Business & Accounting Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/business1-1.jpg" alt="Business Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Sunil Rajapaksa</h3>
+                                <div class="designation">Business Studies Teacher</div>
+                                <div class="subject">Business & Accounting Studies</div>
+                                <div class="grades">Grades 10-11</div>
+                            </div>
+                        </div>
+                        <!-- Geography Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/geography1-1.jpg" alt="Geography Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Ms. Nilmini Seneviratne</h3>
+                                <div class="designation">Geography Teacher</div>
+                                <div class="subject">Geography</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Entrepreneurial Studies Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/business1-2.jpg" alt="Entrepreneurial Studies Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Dinesh Gunawardena</h3>
+                                <div class="designation">Entrepreneurial Studies Teacher</div>
+                                <div class="subject">Entrepreneurial Studies</div>
+                                <div class="grades">Grades 10-11</div>
+                            </div>
+                        </div>
+                        <!-- Citizenship Education Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/citizenship1-1.jpg" alt="Citizenship Education Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Deepika Jayasuriya</h3>
+                                <div class="designation">Citizenship Education Teacher</div>
+                                <div class="subject">Citizenship Education</div>
+                                <div class="grades">Grades 6-9</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arts & Physical Education -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Arts & Physical Education</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Music Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/music1-1.jpg" alt="Music Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Sanath Nandasiri</h3>
+                                <div class="designation">Music Teacher</div>
+                                <div class="subject">Music</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Art Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/art1-1.jpg" alt="Art Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Ananda Silva</h3>
+                                <div class="designation">Head of Art Department</div>
+                                <div class="subject">Art</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Traditional Dancing Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/dance1-1.jpg" alt="Traditional Dancing Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Chandani Wickramasinghe</h3>
+                                <div class="designation">Traditional Dancing Teacher</div>
+                                <div class="subject">Traditional Dancing</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- ICT Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/ict1-1.jpg" alt="ICT Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Lakmal Fernando</h3>
+                                <div class="designation">ICT Teacher</div>
+                                <div class="subject">Information and Communication Technology</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                        <!-- Health & Physical Education Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/pe1-1.jpg" alt="Physical Education Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Ajith Kumara</h3>
+                                <div class="designation">Physical Education Teacher</div>
+                                <div class="subject">Health & Physical Education</div>
+                                <div class="grades">Grades 6-11</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Level Section (Grades 12-13) -->
+            <div class="department-section">
+                <div class="department-title">
+                    <h2>Advanced Level Education (Grades 12-13)</h2>
+                </div>
+                <p class="section-description">Our advanced level teachers are specialists in their fields, preparing students for university education and future careers.</p>
+                
+                <!-- Science Stream -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Science Stream</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Physics Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/physics1-1.jpg" alt="Physics Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Ranjith Perera</h3>
+                                <div class="designation">Physics Teacher</div>
+                                <div class="subject">Physics</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Chemistry Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/chemistry1-1.jpg" alt="Chemistry Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Samanthi Wijesinghe</h3>
+                                <div class="designation">Chemistry Teacher</div>
+                                <div class="subject">Chemistry</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Agriculture Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/agriculture1-1.jpg" alt="Agriculture Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Gamini Karunaratne</h3>
+                                <div class="designation">Agriculture Teacher</div>
+                                <div class="subject">Agriculture</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Biology Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/biology1-1.jpg" alt="Biology Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Nirmala Jayawardena</h3>
+                                <div class="designation">Biology Teacher</div>
+                                <div class="subject">Biology</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Compound Mathematics Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/math1-3.jpg" alt="Mathematics Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Prof. Sarath Gunawardena</h3>
+                                <div class="designation">Mathematics Teacher</div>
+                                <div class="subject">Compound Mathematics</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arts Stream -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Arts Stream</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Sinhala Language Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/sinhala1-3.jpg" alt="Sinhala Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Ms. Dilini Fernando</h3>
+                                <div class="designation">Sinhala Teacher</div>
+                                <div class="subject">Sinhala Language</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Logic Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/logic1-1.jpg" alt="Logic Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Upali Senanayake</h3>
+                                <div class="designation">Logic Teacher</div>
+                                <div class="subject">Logic and Scientific Method</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Geography Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/geography1-2.jpg" alt="Geography Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Asoka Gunasekara</h3>
+                                <div class="designation">Geography Teacher</div>
+                                <div class="subject">Geography</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Political Science Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/political1-1.jpg" alt="Political Science Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Jayantha Silva</h3>
+                                <div class="designation">Political Science Teacher</div>
+                                <div class="subject">Political Science</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- History Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/history1-2.jpg" alt="History Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Prof. Mahinda Deegalle</h3>
+                                <div class="designation">History Teacher</div>
+                                <div class="subject">History</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Home Economics Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/home1-1.jpg" alt="Home Economics Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Indrani Perera</h3>
+                                <div class="designation">Home Economics Teacher</div>
+                                <div class="subject">Home Economics</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Buddhism Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/buddhism1-2.jpg" alt="Buddhism Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Ven. Dhammika Thero</h3>
+                                <div class="designation">Buddhism Teacher</div>
+                                <div class="subject">Buddhism</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arts & Culture -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Arts & Culture</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Arts and Culture Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/art1-2.jpg" alt="Arts and Culture Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Priyanka Jayawardena</h3>
+                                <div class="designation">Arts and Culture Teacher</div>
+                                <div class="subject">Arts and Culture</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Drama and Theatre Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/drama1-1.jpg" alt="Drama Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Dharmasiri Bandaranayake</h3>
+                                <div class="designation">Drama and Theatre Teacher</div>
+                                <div class="subject">Drama and Theatre</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Dance Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/dance1-2.jpg" alt="Dance Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Vajira Chitrasena</h3>
+                                <div class="designation">Dance Teacher</div>
+                                <div class="subject">Dance</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Oriental Music Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/music1-2.jpg" alt="Oriental Music Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Rohana Weerasinghe</h3>
+                                <div class="designation">Oriental Music Teacher</div>
+                                <div class="subject">Oriental Music</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commerce Stream -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Commerce Stream</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- Economics Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/economics1-1.jpg" alt="Economics Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Saman Kelegama</h3>
+                                <div class="designation">Economics Teacher</div>
+                                <div class="subject">Economics</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Business Studies Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/business1-3.jpg" alt="Business Studies Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mrs. Champa Ratnayake</h3>
+                                <div class="designation">Business Studies Teacher</div>
+                                <div class="subject">Business Studies</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                        <!-- Accounting Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/accounting1-1.jpg" alt="Accounting Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Mr. Ravi Karunanayake</h3>
+                                <div class="designation">Accounting Teacher</div>
+                                <div class="subject">Accounting</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology Stream -->
+                <div class="subject-group">
+                    <h3 class="subject-group-title">Technology Stream</h3>
+                    <div class="staff-grid-teachers">
+                        <!-- ICT Teacher -->
+                        <div class="staff-card teacher">
+                            <div class="staff-image">
+                                <img src="images/teachers/album/ict1-2.jpg" alt="ICT Teacher">
+                            </div>
+                            <div class="staff-info">
+                                <h3>Dr. Ruwan Weerasooriya</h3>
+                                <div class="designation">ICT Teacher</div>
+                                <div class="subject">Information and Communication Technology</div>
+                                <div class="grades">Grades 12-13</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Activities Album Section -->
+    <section class="teacher-activities">
+        <div class="container">
+            <div class="department-title">
+                <h2>Teacher Activities</h2>
+            </div>
+            <p class="section-description">Our teachers are actively involved in various educational and extracurricular activities that enrich our school community.</p>
+            
+            <div class="activities-album">
+                <div class="album-container">
+                    <div class="album-slider">
+                        <div class="album-slide active">
+                            <img src="images/teachers/album/sinhala1-3.jpg" alt="Teacher Activity">
+                            <div class="slide-caption">Language teachers conducting a workshop</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="images/teachers/album/english1-2.jpg" alt="Teacher Activity">
+                            <div class="slide-caption">English department organizing a debate competition</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="images/teachers/album/art1-1.jpg" alt="Teacher Activity">
+                            <div class="slide-caption">Art teachers preparing for the annual exhibition</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="images/teachers/album/english1-3.jpg" alt="Teacher Activity">
+                            <div class="slide-caption">Teachers participating in professional development</div>
+                        </div>
+                        <div class="album-slide">
+                            <img src="images/teachers/album/art1-2.jpg" alt="Teacher Activity">
+                            <div class="slide-caption">Creative arts session led by our talented teachers</div>
+                        </div>
+                    </div>
+                    <button class="album-nav prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="album-nav next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="album-thumbnails">
+                    <div class="thumbnail active" data-index="0">
+                        <img src="images/teachers/album/sinhala1-3.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="1">
+                        <img src="images/teachers/album/english1-2.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="2">
+                        <img src="images/teachers/album/art1-1.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="3">
+                        <img src="images/teachers/album/english1-3.jpg" alt="Thumbnail">
+                    </div>
+                    <div class="thumbnail" data-index="4">
+                        <img src="images/teachers/album/art1-2.jpg" alt="Thumbnail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/Screenshot_2025-03-28_182234-removebg-preview.png" alt="School Logo">
+                    <div class="footer-logo-text">
+                        <h3>Pimburuwellegama College</h3>
+                        <p>Excellence in Education Since 1923</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="primary.html">Primary</a></li>
+                        <li><a href="secondary.html">Secondary</a></li>
+                        <li><a href="advanced.html">Advanced</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="teachers.html">Teachers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Pimburuwellegama, Kurunegala, Sri Lanka</p>
+                    <p><i class="fas fa-phone"></i> +94 37 2267 890</p>
+                    <p><i class="fas fa-envelope"></i> info@pimburuwellegama.edu.lk</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pimburuwellegama College. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Add active class to current nav item
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <!-- JavaScript for Teacher Activities Album -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Teacher Activities Album functionality
+            const slides = document.querySelectorAll('.album-slide');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const prevBtn = document.querySelector('.album-nav.prev');
+            const nextBtn = document.querySelector('.album-nav.next');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                
+                // Show the selected slide
+                slides[index].classList.add('active');
+                thumbnails[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            // Next slide function
+            function nextSlide() {
+                let newIndex = currentSlide + 1;
+                if (newIndex >= totalSlides) newIndex = 0;
+                showSlide(newIndex);
+            }
+
+            // Previous slide function
+            function prevSlide() {
+                let newIndex = currentSlide - 1;
+                if (newIndex < 0) newIndex = totalSlides - 1;
+                showSlide(newIndex);
+            }
+
+            // Event listeners for navigation buttons
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            // Event listeners for thumbnails
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    showSlide(index);
+                });
+            });
+
+            // Auto-advance slides every 5 seconds
+            const slideInterval = setInterval(nextSlide, 5000);
+
+            // Pause auto-advance when hovering over the slider
+            const albumContainer = document.querySelector('.album-container');
+            if (albumContainer) {
+                albumContainer.addEventListener('mouseenter', function() {
+                    clearInterval(slideInterval);
+                });
+
+                albumContainer.addEventListener('mouseleave', function() {
+                    clearInterval(slideInterval); // Clear any existing interval
+                    setInterval(nextSlide, 5000); // Start a new interval
+                });
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            });
+
+            // Touch swipe functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            const albumSlider = document.querySelector('.album-slider');
+            if (albumSlider) {
+                albumSlider.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                albumSlider.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+            }
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX) {
+                    // Swipe left, go to next slide
+                    nextSlide();
+                } else if (touchEndX > touchStartX) {
+                    // Swipe right, go to previous slide
+                    prevSlide();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

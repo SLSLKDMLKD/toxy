@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal's Message - Pimburuwellegama College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --accent: #3498db;
+            --light: #fff8e1;
+            --dark: #1a237e;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Header */
+        .header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)),
+                        url('images/school-building.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Principal Section */
+        .principal {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .principal-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .principal-image {
+            position: sticky;
+            top: 100px;
+        }
+
+        .principal-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .principal-text {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .principal-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .principal-text p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .principal-signature {
+            margin-top: 3rem;
+            text-align: right;
+        }
+
+        .principal-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .principal-designation {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        /* Prefects Section */
+        .prefects {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .prefects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .prefect-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .prefect-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .prefect-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .prefect-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .prefect-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .prefect-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .prefect-quote {
+            color: var(--dark);
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 1024px) {
+            .principal-content {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .principal-content {
+                grid-template-columns: 1fr;
+            }
+
+            .principal-image {
+                position: static;
+                margin-bottom: 2rem;
+            }
+
+            .prefects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/Screenshot_2025-03-28_182234-removebg-preview.png" alt="School Logo">
+                <span class="logo-text">PCC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="primary.html">Primary</a></li>
+                <li><a href="secondary.html">Secondary</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="teachers.html">Teachers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Principal's Message</h1>
+            <p>Welcome to Pimburuwellegama College</p>
+        </div>
+    </header>
+
+    <!-- Principal Section -->
+    <section class="principal">
+        <div class="container">
+            <div class="principal-content">
+                <div class="principal-image">
+                    <img src="images/principal.jpg" alt="School Principal">
+                </div>
+                <div class="principal-text">
+                    <h2>Message from the Principal</h2>
+                    <p>Dear Students, Parents, and Well-wishers,</p>
+                    <p>It gives me immense pleasure to welcome you to Pimburuwellegama College, an institution that has been at the forefront of educational excellence for many years. Our school stands as a beacon of knowledge, character development, and holistic growth.</p>
+                    <p>At PCC, we believe in nurturing not just academic excellence, but also developing well-rounded individuals who will contribute meaningfully to society. Our dedicated team of teachers works tirelessly to provide quality education while instilling strong values and ethics in our students.</p>
+                    <p>We focus on creating an environment that encourages curiosity, creativity, and critical thinking. Our curriculum is designed to meet the challenges of the modern world while preserving our rich cultural heritage. We provide numerous opportunities for our students to explore their talents through various academic and extra-curricular activities.</p>
+                    <p>As we move forward, we remain committed to our vision of creating future leaders who are knowledgeable, compassionate, and ready to face the challenges of tomorrow. I invite you to be part of our journey in shaping the future of our nation.</p>
+                    <div class="principal-signature">
+                        <div class="principal-name">Mr. D.M. Jayawardena</div>
+                        <div class="principal-designation">Principal<br>Pimburuwellegama College</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prefects Section -->
+    <section class="prefects" id="prefects">
+        <div class="container">
+            <h2 class="section-title">Our Head Prefects</h2>
+            <div class="prefects-grid">
+                <div class="prefect-card">
+                    <img src="https://raw.githubusercontent.com/SLSLKDMLKD/hhj/refs/heads/main/images/Head%20Boy%20.png" alt="Head Boy" class="prefect-image">
+                    <div class="prefect-content">
+                        <h3 class="prefect-name">Maura shanala</h3>
+                        <div class="prefect-role">Head Boy 2025</div>
+                        <p class="prefect-quote">"Leadership is not about being the best, but about making everyone else better."</p>
+                    </div>
+                </div>
+                <div class="prefect-card">
+                    <img src="images/head-girl.jpg" alt="Head Girl" class="prefect-image">
+                    <div class="prefect-content">
+                        <h3 class="prefect-name">Nethmi Silva</h3>
+                        <div class="prefect-role">Head Girl 2025</div>
+                        <p class="prefect-quote">"Success is not just about achievement, but about inspiring others to achieve."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">PCC</div>
+                    <p>Nurturing minds, building futures, and creating leaders of tomorrow</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Education</h4>
+                    <ul>
+                        <li><a href="primary.html">Primary</a></li>
+                        <li><a href="secondary.html">Secondary</a></li>
+                        <li><a href="advanced.html">Advanced</a></li>
+                        <li><a href="teachers.html">Teachers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pimburuwellegama College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

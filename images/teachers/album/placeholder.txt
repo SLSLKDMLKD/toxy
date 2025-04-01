@@ -1,0 +1,2 @@
+This is a placeholder file to ensure the album directory exists.
+This directory will store teacher album photos.

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#e8eaf6"/>
+  <text x="200" y="150" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Art Competition</text>
+  <rect x="50" y="50" width="300" height="200" stroke="#1a237e" stroke-width="5" fill="none" rx="10" ry="10"/>
+  <rect x="100" y="100" width="60" height="80" fill="#c5cae9" stroke="#333" stroke-width="2"/>
+  <rect x="170" y="100" width="60" height="80" fill="#ffcdd2" stroke="#333" stroke-width="2"/>
+  <rect x="240" y="100" width="60" height="80" fill="#dcedc8" stroke="#333" stroke-width="2"/>
+  <polygon points="130,200 130,220 100,220 160,220" fill="#ffd54f" stroke="#333" stroke-width="1"/>
+  <polygon points="200,200 200,220 170,220 230,220" fill="#90caf9" stroke="#333" stroke-width="1"/>
+  <polygon points="270,200 270,220 240,220 300,220" fill="#a5d6a7" stroke="#333" stroke-width="1"/>
+</svg>

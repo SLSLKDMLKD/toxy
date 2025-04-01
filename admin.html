@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCC Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #ffc107;
+            --text: #333;
+            --bg: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 35, 126, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .login-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .login-form::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid var(--secondary);
+            border-radius: 14px;
+            pointer-events: none;
+        }
+
+        .login-form h2 {
+            color: var(--primary);
+            font-family: 'Lora', serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(26, 35, 126, 0.2);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
+        }
+
+        .login-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #151b4e;
+            transform: translateY(-2px);
+        }
+
+        .admin-panel {
+            display: none;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+        }
+
+        .logout-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-card h3 {
+            color: var(--primary);
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .admin-card h3 i {
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(26, 35, 126, 0.2);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #151b4e;
+        }
+
+        .messages-list,
+        .announcements-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .message-item,
+        .announcement-item {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(26, 35, 126, 0.1);
+        }
+
+        .message-item:last-child,
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+
+        .message-header,
+        .announcement-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .message-name,
+        .announcement-title {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .message-date,
+        .announcement-date {
+            color: #666;
+        }
+
+        .message-content,
+        .announcement-content {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .image-preview {
+            max-width: 200px;
+            margin-top: 1rem;
+            border-radius: 6px;
+        }
+
+        .change-password-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1001;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .change-password-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #666;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <form class="login-form" id="loginForm">
+            <h2>Admin Login</h2>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+
+    <!-- Change Password Form -->
+    <div class="change-password-overlay" id="changePasswordOverlay"></div>
+    <form class="change-password-form" id="changePasswordForm">
+        <button type="button" class="close-btn" onclick="hideChangePasswordForm()">&times;</button>
+        <h2>Change Password</h2>
+        <div class="input-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" required>
+        </div>
+        <div class="input-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" required>
+        </div>
+        <div class="input-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" required>
+        </div>
+        <button type="submit" class="login-btn">Change Password</button>
+    </form>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <header class="admin-header">
+            <h1>PCC Admin Panel</h1>
+            <div>
+                <button onclick="showChangePasswordForm()" class="logout-btn" style="margin-right: 1rem;">Change Password</button>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <div class="admin-grid">
+            <!-- Contact Messages -->
+            <div class="admin-card">
+                <h3><i class="fas fa-envelope"></i> Contact Messages</h3>
+                <div class="messages-list" id="messagesList">
+                    <!-- Messages will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Announcements -->
+            <div class="admin-card">
+                <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+                <form id="announcementForm">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="announcementTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="announcementContent" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image (Optional)</label>
+                        <input type="file" id="announcementImage" accept="image/*">
+                    </div>
+                    <img id="announcementPreview" class="image-preview" style="display: none;">
+                    <button type="submit" class="submit-btn">Post Announcement</button>
+                </form>
+                <div class="announcements-list" id="announcementsList">
+                    <!-- Announcements will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Image Upload - Advanced -->
+            <div class="admin-card">
+                <h3><i class="fas fa-graduation-cap"></i> Advanced Level Images</h3>
+                <form id="advancedImageForm">
+                    <div class="form-group">
+                        <label>Select Image</label>
+                        <input type="file" id="advancedImage" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="advancedCategory" required>
+                            <option value="chemistry-lab">Chemistry Laboratory</option>
+                            <option value="physics-lab">Physics Laboratory</option>
+                            <option value="commerce-room">Commerce Room</option>
+                            <option value="ict-lab">ICT Laboratory</option>
+                            <option value="arts-class">Arts Classroom</option>
+                        </select>
+                    </div>
+                    <img id="advancedPreview" class="image-preview" style="display: none;">
+                    <button type="submit" class="submit-btn">Upload Image</button>
+                </form>
+            </div>
+
+            <!-- Image Upload - Primary -->
+            <div class="admin-card">
+                <h3><i class="fas fa-child"></i> Primary Level Images</h3>
+                <form id="primaryImageForm">
+                    <div class="form-group">
+                        <label>Select Image</label>
+                        <input type="file" id="primaryImage" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="primaryCategory" required>
+                            <option value="classroom">Classroom Activities</option>
+                            <option value="sports">Sports Activities</option>
+                            <option value="arts">Arts and Crafts</option>
+                            <option value="library">Library Time</option>
+                            <option value="cultural">Cultural Events</option>
+                        </select>
+                    </div>
+                    <img id="primaryPreview" class="image-preview" style="display: none;">
+                    <button type="submit" class="submit-btn">Upload Image</button>
+                </form>
+            </div>
+
+            <!-- Image Upload - Secondary -->
+            <div class="admin-card">
+                <h3><i class="fas fa-school"></i> Secondary Level Images</h3>
+                <form id="secondaryImageForm">
+                    <div class="form-group">
+                        <label>Select Image</label>
+                        <input type="file" id="secondaryImage" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="secondaryCategory" required>
+                            <option value="science-lab">Science Laboratory</option>
+                            <option value="computer-lab">Computer Laboratory</option>
+                            <option value="sports">Sports Activities</option>
+                            <option value="cultural">Cultural Events</option>
+                            <option value="library">Library Resources</option>
+                        </select>
+                    </div>
+                    <img id="secondaryPreview" class="image-preview" style="display: none;">
+                    <button type="submit" class="submit-btn">Upload Image</button>
+                </form>
+            </div>
+
+            <!-- Update Content -->
+            <div class="admin-card">
+                <h3><i class="fas fa-edit"></i> Update Content</h3>
+                <form id="contentUpdateForm">
+                    <div class="form-group">
+                        <label>Select Section</label>
+                        <select id="contentSection" required>
+                            <option value="pathways">Educational Pathways</option>
+                            <option value="principal">Principal's Message</option>
+                            <option value="prefects">Head Prefects Message</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="contentText" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image (if applicable)</label>
+                        <input type="file" id="contentImage" accept="image/*">
+                    </div>
+                    <img id="contentPreview" class="image-preview" style="display: none;">
+                    <button type="submit" class="submit-btn">Update Content</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Login credentials
+        const credentials = {
+            username: 'pcc1',
+            password: 'pcc1'
+        };
+
+        // DOM Elements
+        const loginOverlay = document.getElementById('loginOverlay');
+        const loginForm = document.getElementById('loginForm');
+        const adminPanel = document.getElementById('adminPanel');
+        const changePasswordForm = document.getElementById('changePasswordForm');
+        const changePasswordOverlay = document.getElementById('changePasswordOverlay');
+
+        // Login Form Handler
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === credentials.username && password === credentials.password) {
+                loginOverlay.style.display = 'none';
+                adminPanel.style.display = 'block';
+                localStorage.setItem('adminLoggedIn', 'true');
+            } else {
+                alert('Invalid credentials');
+            }
+        });
+
+        // Check Login Status
+        function checkLogin() {
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                loginOverlay.style.display = 'none';
+                adminPanel.style.display = 'block';
+            }
+        }
+
+        // Logout Function
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            loginOverlay.style.display = 'flex';
+            adminPanel.style.display = 'none';
+        }
+
+        // Change Password Functions
+        function showChangePasswordForm() {
+            changePasswordForm.style.display = 'block';
+            changePasswordOverlay.style.display = 'block';
+        }
+
+        function hideChangePasswordForm() {
+            changePasswordForm.style.display = 'none';
+            changePasswordOverlay.style.display = 'none';
+        }
+
+        changePasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (currentPassword !== credentials.password) {
+                alert('Current password is incorrect');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match');
+                return;
+            }
+
+            credentials.password = newPassword;
+            alert('Password changed successfully');
+            hideChangePasswordForm();
+        });
+
+        // Image Preview Functions
+        function setupImagePreview(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Setup image previews
+        setupImagePreview('announcementImage', 'announcementPreview');
+        setupImagePreview('advancedImage', 'advancedPreview');
+        setupImagePreview('primaryImage', 'primaryPreview');
+        setupImagePreview('secondaryImage', 'secondaryPreview');
+        setupImagePreview('contentImage', 'contentPreview');
+
+        // Form Submission Handlers
+        document.getElementById('announcementForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle announcement submission
+            alert('Announcement posted successfully');
+            e.target.reset();
+            document.getElementById('announcementPreview').style.display = 'none';
+        });
+
+        document.getElementById('advancedImageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle advanced image upload
+            alert('Advanced level image uploaded successfully');
+            e.target.reset();
+            document.getElementById('advancedPreview').style.display = 'none';
+        });
+
+        document.getElementById('primaryImageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle primary image upload
+            alert('Primary level image uploaded successfully');
+            e.target.reset();
+            document.getElementById('primaryPreview').style.display = 'none';
+        });
+
+        document.getElementById('secondaryImageForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle secondary image upload
+            alert('Secondary level image uploaded successfully');
+            e.target.reset();
+            document.getElementById('secondaryPreview').style.display = 'none';
+        });
+
+        document.getElementById('contentUpdateForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle content update
+            alert('Content updated successfully');
+            e.target.reset();
+            document.getElementById('contentPreview').style.display = 'none';
+        });
+
+        // Initialize
+        checkLogin();
+    </script>
+</body>
+</html>
